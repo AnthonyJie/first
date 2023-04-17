@@ -1,29 +1,22 @@
-import 'normalize.css'
 import ReactDom from 'react-dom'
 
-// function Home() {
-//   return <h1>这是home组件</h1>
-// }
+import { Component } from 'react'
 
-const Home = () => <h1>这是home组件</h1>
+// 类组件必须继承component构造函数
 
-export const hooks = () => {
-  let count = 1
-  const addCount = () => {
-    count += 1
-    console.log(count)
+// 必须要写render方法 且一定要有返回值
+
+class Hello extends Component {
+  render() {
+    return <h1>hello world</h1>
   }
-
-  return { count, addCount }
 }
-
-const { addCount, count } = hooks()
 
 const element = (
   <>
-    <Home></Home>
-    <span>{count}</span>
-    <button onClick={addCount}>加加</button>
+    <div>
+      <Hello></Hello>
+    </div>
   </>
 )
 
