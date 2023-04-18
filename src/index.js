@@ -1,29 +1,30 @@
 import ReactDom from 'react-dom'
-
 import 'normalize.css'
 import { Component } from 'react'
+// import { Component } from 'react'
 
-class App extends Component {
+class Person extends Component {
   constructor() {
     super()
     this.state = {
-      count: 0,
+      msg: 'msg778',
     }
   }
   render() {
     return (
-      <div>
-        <h1>我是跟组件</h1>
-        <h2>count: {this.state.count}</h2>
-      </div>
+      <>
+        <i>{this.state.msg}</i>
+        <button onClick={this.addCount}>+1</button>
+        <a onClick={this.addCount} href="https://www.baidu.com">
+          6
+        </a>
+      </>
     )
+  }
+  addCount(e) {
+    e.preventDefault()
+    console.log(e)
   }
 }
 
-const element = (
-  <>
-    <App></App>
-  </>
-)
-
-ReactDom.render(element, document.querySelector('#root'))
+ReactDom.render(<Person></Person>, document.getElementById('root'))
