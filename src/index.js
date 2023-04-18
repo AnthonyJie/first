@@ -1,21 +1,18 @@
 import ReactDom from 'react-dom'
+import 'normalize.css'
 
-import { Component } from 'react'
+import Hello from './components/Hello'
 
+import Demo from './components/Demo'
 // 类组件必须继承component构造函数
 
 // 必须要写render方法 且一定要有返回值
-
-class Hello extends Component {
-  render() {
-    return <h1>hello world</h1>
-  }
-}
 
 const element = (
   <>
     <div>
       <Hello></Hello>
+      <Demo></Demo>
     </div>
   </>
 )
