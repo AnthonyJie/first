@@ -12,6 +12,10 @@
   border: 2px solid gray;
 }
 
-li {
+.first {
   list-style: none;
+}
+
+.active {
+  color: purple;
 }
