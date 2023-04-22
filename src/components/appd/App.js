@@ -1,17 +1,80 @@
-const Avatar = (props) => {
+import { useContext, useState } from 'react'
+import './App.scss'
+
+// 跨组件通讯 - Context
+// 1. 创建 Context 对象
+
+// 2. 划定范围，提供共享数据
+// 3. 范围内的组件，获取共享数据
+
+// -------------------------侧边栏-----------------------
+const Sidebar = () => {
   return (
-    <div>
-      <span>{props.imgUrl}</span>
-      <hr />
-      <span>{props.list}</span>
+    <div className="sidebar">
+      <Menu />
+    </div>
+  )
+}
+const Menu = () => {
+  return (
+    <div className="menu">
+      <ul>
+        <MenuItem />
+        <MenuItem />
+      </ul>
+    </div>
+  )
+}
+const MenuItem = () => {
+  // 3. 范围内的组件，获取共享数据
+  return <li>菜单</li>
+}
+
+// -------------------------右侧内容-----------------------
+const Content = () => {
+  return (
+    <div className="content">
+      <div className="main">Context 跨组件通讯</div>
+      <Footer />
+    </div>
+  )
+}
+const Footer = () => {
+  return (
+    <div className="footer">
+      <button>重置主题</button>
     </div>
   )
 }
 
+// 父组件
 const App = () => {
+  // 要共享的主题颜色
+  const [theme, setTheme] = useState('#1677FF')
+
+  // 重置主题的函数
+  const onReset = () => {
+    setTheme('#1677FF')
+  }
+
   return (
-    <div>
-      <Avatar list={[1, 2, 10, 8, 7, 9]} imgUrl="cenima"></Avatar>
+    <div className="app">
+      {/* 2. 划定范围，提供共享数据 */}
+
+      {/* 默认颜色： #1677FF */}
+      <input
+        className="theme-selector"
+        type="color"
+        value={theme}
+        onChange={(e) => setTheme(e.target.value)}
+      />
+
+      <div className="main">
+        {/* 侧边栏 */}
+        <Sidebar />
+        {/* 右侧内容 */}
+        <Content />
+      </div>
     </div>
   )
 }
